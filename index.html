@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Wini!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for animations and pastel theme */
+        body {
+            font-family: 'Luckiest Guy', cursive;
+            overflow: hidden; /* Prevent scrollbars from bouncing elements */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>') 12 12, auto;
+        }
+
+        /* New Pastel/Retro Colors based on image */
+        .bg-retro-yellow { background-color: #F8E7A1; } /* Creamy Yellow */
+        .bg-retro-blue { background-color: #6DA0E4; } /* Vibrant Blue */
+        .bg-retro-teal { background-color: #A7E0D3; } /* Light Teal/Mint */
+        .bg-retro-pink { background-color: #FFB6C1; } /* Soft Pink */
+        .bg-retro-dark-blue { background-color: #4A699B; } /* Darker Blue for outlines/shadows */
+
+        .text-retro-cream { color: #F8E7A1; }
+        .text-retro-dark-blue { color: #4A699B; }
+        .text-retro-blue { color: #6DA0E4; }
+        .text-retro-pink { color: #FFB6C1; }
+        .text-black { color: #000000; }
+
+        .border-retro-dark-blue { border-color: #4A699B; }
+        .shadow-retro-dark-blue { box-shadow: 0 8px 16px rgba(74,105,155,0.4); } /* Shadow with dark blue tint */
+
+        /* Landing page background stripes */
+        .landing-bg-stripes {
+            background: conic-gradient(
+                from 0deg at 50% 50%,
+                #F8E7A1 0deg 22.5deg, /* Yellow */
+                #A7E0D3 22.5deg 45deg, /* Teal */
+                #6DA0E4 45deg 67.5deg, /* Blue */
+                #FFB6C1 67.5deg 90deg, /* Pink */
+                #F8E7A1 90deg 112.5deg,
+                #A7E0D3 112.5deg 135deg,
+                #6DA0E4 135deg 157.5deg,
+                #FFB6C1 157.5deg 180deg,
+                #F8E7A1 180deg 202.5deg,
+                #A7E0D3 202.5deg 225deg,
+                #6DA0E4 225deg 247.5deg,
+                #FFB6C1 247.5deg 270deg,
+                #F8E7A1 270deg 292.5deg,
+                #A7E0D3 292.5deg 315deg,
+                #6DA0E4 315deg 337.5deg,
+                #FFB6C1 337.5deg 360deg
+            );
+        }
+
+        /* Text shadow for retro effect, mimicking the "Retronic" image */
+        .retro-title-text {
+            color: #F8E7A1; /* Creamy yellow text */
+            -webkit-text-stroke: 4px #4A699B; /* Dark blue outline */
+            text-shadow:
+                -6px -6px 0px rgba(255, 255, 255, 0.5), /* Light highlight */
+                6px 6px 0px #4A699B, /* Dark blue shadow */
+                12px 12px 0px rgba(0,0,0,0.2); /* Deeper shadow */
+        }
+
+        /* Central oval for the title */
+        .title-oval {
+            background-color: #6DA0E4; /* Vibrant Blue */
+            border: 8px solid #4A699B; /* Dark blue border */
+            border-radius: 50% / 30%; /* Oval shape */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4); /* Stronger shadow */
+            padding: 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Small banner styling */
+        .small-banner {
+            background-color: #F8E7A1; /* Creamy Yellow */
+            border: 4px solid #4A699B; /* Dark blue border */
+            border-radius: 9999px; /* Pill shape */
+            padding: 0.5rem 1.5rem;
+            font-size: 1.25rem; /* text-xl */
+            font-weight: bold;
+            color: #4A699B;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: absolute; /* For positioning */
+            z-index: 11;
+        }
+
+        /* Wavy badge (simplified to rounded for now) */
+        .wavy-badge {
+            background-color: #FFB6C1; /* Soft Pink */
+            border: 4px solid #4A699B; /* Dark blue border */
+            border-radius: 25% 75% 75% 25% / 75% 25% 75% 25%; /* Attempt at wavy shape, can be adjusted */
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4A699B;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            position: absolute;
+            right: 10%;
+            top: 15%;
+            transform: rotate(10deg);
+            z-index: 11;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        /* For a true wavy badge, a more complex clip-path or SVG is needed. This is a simplified version. */
+
+        /* Stacked coins (simplified) */
+        .stacked-coins {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 11;
+        }
+        .coin {
+            width: 60px;
+            height: 20px;
+            background-color: #F8E7A1; /* Creamy Yellow */
+            border: 3px solid #4A699B; /* Dark blue border */
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            margin-bottom: -10px; /* Overlap */
+            position: relative;
+        }
+        .coin:nth-child(2) { transform: translateY(-10px); z-index: 2; }
+        .coin:nth-child(1) { transform: translateY(-20px); z-index: 3; }
+
+
+        /* Bouncing animation for stickers */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Float animation for stickers */
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(5px, -5px); }
+            50% { transform: translate(0, 10px); }
+            75% { transform: translate(-5px, 5px); }
+        }
+
+        /* Sticker cutout effect */
+        .sticker-cutout {
+            border: 4px solid white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,255,255,0.5); /* Outer white border as a cutout */
+            border-radius: 20px; /* Rounded corners for cutout look */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .sticker-cutout:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3), 0 0 0 6px rgba(255,255,255,0.7);
+        }
+
+        .sticker-cutout:active {
+            transform: scale(0.95);
+        }
+
+        /* Animation for dialogue box appearance */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .dialogue-box.show {
+            animation: fadeInScale 0.3s ease-out forwards;
+        }
+
+        /* Arrow styling (SVG for a cute look) */
+        .arrow-svg {
+            position: absolute;
+            width: 40px; /* Made smaller and thinner */
+            height: 40px;
+            cursor: pointer;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)); /* Shadow for cutout effect */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .arrow-svg:hover {
+            transform: scale(1.1);
+        }
+
+        .arrow-svg path {
+            fill: none; /* Made arrows thinner by removing fill */
+            stroke: #ffffff; /* Vibrant blue stroke */
+            stroke-width: 2; /* Thinner stroke */
+        }
+
+        /* Zoom effect for Wini's image container */
+        .wini-image-container {
+            transition: transform 0.5s ease-in-out;
+            transform-origin: center center; /* Default origin */
+        }
+
+        /* Falling emoji animation */
+        @keyframes fall-and-fade {
+            0% {
+                transform: translate(-50%, -50%) translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) translateY(300px) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .falling-emoji {
+            position: absolute;
+            font-size: 2.5rem; /* Adjust emoji size */
+            pointer-events: none; /* Make sure emojis don't block clicks */
+            white-space: nowrap; /* Prevent emoji from wrapping */
+            animation: fall-and-fade 2s ease-out forwards;
+            z-index: 100; /* Ensure emojis are on top */
+        }
+
+        /* Modern Phone SVG styling */
+        .phone-svg {
+            width: 70px; /* Smaller width for side placement */
+            height: 140px; /* Smaller height */
+            background-color: #333; /* Darker body for modern look */
+            border: 4px solid #4A699B; /* Dark blue border */
+            border-radius: 25px; /* More rounded for modern sleekness */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 0 0 4px rgba(255,255,255,0.5); /* Sticker cutout effect */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align screen to top */
+            padding: 8px 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden; /* Hide anything outside phone bounds */
+        }
+
+        .phone-svg:hover {
+            transform: scale(1.05);
+        }
+
+        .phone-screen {
+            width: 95%; /* Wider screen */
+            height: 80%; /* Taller screen */
+            background-color: #000; /* Black screen */
+            border-radius: 15px; /* Rounded screen corners */
+            position: relative;
+            margin-top: 5px; /* Space from top edge */
+            display: flex; /* Added for centering text */
+            align-items: center; /* Added for centering text */
+            justify-content: center; /* Added for centering text */
+        }
+
+        .phone-camera-notch {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px; /* Smaller width for circular notch */
+            height: 8px; /* Smaller height for circular notch */
+            background-color: #000;
+            border-radius: 50%; /* Changed to 50% for circle */
+        }
+
+        .phone-speaker {
+            width: 20%;
+            height: 3px;
+            background-color: #555;
+            border-radius: 2px;
+            position: absolute;
+            top: 2px; /* Inside notch */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .phone-button {
+            width: 20px;
+            height: 20px;
+            background-color: #555;
+            border-radius: 50%;
+            margin-top: auto; /* Push to bottom */
+            margin-bottom: 5px;
+            border: 2px solid #777;
+            display: none; /* Hide for modern look */
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col items-center justify-center text-gray-800">
+
+    <div id="landing-page" class="absolute inset-0 flex flex-col items-center justify-center landing-bg-stripes transition-opacity duration-500 z-20">
+        <div class="small-banner top-[10%]">INTRODUCING</div>
+
+        <div class="title-oval">
+            <h1 class="text-6xl md:text-8xl font-bold text-center retro-title-text leading-none">
+                Things I like about Wini!
+            </h1>
+        </div>
+
+        <div class="stacked-coins">
+            <div class="coin"></div>
+            <div class="coin"></div>
+            <div class="coin"></div>
+        </div>
+
+        <button id="go-button" class="bg-retro-yellow text-retro-dark-blue text-3xl px-8 py-4 rounded-full shadow-xl hover:bg-retro-pink hover:text-white transition-all duration-300 transform hover:scale-110 active:scale-95 sticker-cutout mt-8 z-20">
+            Let's Go!
+        </button>
+
+        <div class="absolute top-5 left-5 w-24 h-24 bg-retro-teal rounded-full flex items-center justify-center text-5xl sticker-cutout" style="animation: float 6s ease-in-out infinite;">✨</div>
+        <div class="absolute bottom-5 right-5 w-20 h-20 bg-retro-pink rounded-xl flex items-center justify-center text-4xl sticker-cutout" style="animation: float 7s ease-in-out infinite reverse;">😊</div>
+        <div class="absolute top-1/4 right-1/4 w-28 h-28 bg-retro-yellow rounded-full flex items-center justify-center text-6xl sticker-cutout" style="animation: float 5s ease-in-out infinite;">🌸</div>
+        <div class="absolute bottom-1/3 left-1/4 w-16 h-16 bg-retro-blue rounded-lg flex items-center justify-center text-3xl sticker-cutout" style="animation: float 8s ease-in-out infinite;">🦋</div>
+    </div>
+
+    <div id="main-page" class="absolute inset-0 flex flex-col items-center justify-center bg-retro-teal transition-opacity duration-500 opacity-0 pointer-events-none z-10 p-4">
+        <h2 class="text-5xl md:text-7xl font-bold text-retro-dark-blue text-center drop-shadow-lg mb-8 retro-title-text">
+            Some facts after 6 months
+        </h2>
+
+        <div id="wini-image-wrapper" class="relative w-full max-w-xs md:max-w-sm aspect-square bg-retro-pink rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden sticker-cutout wini-image-container mx-auto">
+            <img id="wini-cartoon" src="wini.png" alt="Wini's Cartoon" class="h-48 w-48 md:h-64 md:w-64 object-contain filter drop-shadow-xl mx-auto">
+
+            <div class="arrow-svg absolute top-[30%] left-[60%] -translate-x-1/2 -translate-y-1/2 rotate-45" data-part="heart">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L12 22M12 2L5 9M12 2L19 9" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <div class="arrow-svg absolute top-[25%] left-[37%] -translate-x-1/2 -translate-y-1/2 rotate-120" data-part="eyes">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="rotate(270 12 12)">
+                        <path d="M12 2L12 22M12 2L5 9M12 2L19 9" stroke-linecap="round" stroke-linejoin="round"/>
+                   </g>
+                </svg>
+            </div>
+
+            <div class="arrow-svg absolute top-[45%] left-[57%] -translate-y-1/2 rotate-90" data-part="arm">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L12 22M12 2L5 9M12 2L19 9" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <div class="arrow-svg absolute top-[10%] left-[50%] -translate-x-1/2 -translate-y-1/2 rotate-0" data-part="brain">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L12 22M12 2L5 9M12 2L19 9" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <div class="arrow-svg absolute top-[45%] left-[35%] -translate-x-1/2 -translate-y-1/2 rotate-315" data-part="jacket">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="rotate(270 12 12)">
+                        <path d="M12 2L12 22M12 2L5 9M12 2L19 9" stroke-linecap="round" stroke-linejoin="round"/>
+                   </g>
+                </svg>
+            </div>
+
+              <div class="absolute top-5 left-5 w-16 h-16 bg-retro-yellow rounded-full flex items-center justify-center text-3xl sticker-cutout" style="animation: float 5s ease-in-out infinite;">😊</div>
+            <div class="absolute bottom-5 right-5 w-14 h-14 bg-retro-blue rounded-xl flex items-center justify-center text-2xl sticker-cutout" style="animation: float 6s ease-in-out infinite reverse;">🌟</div>
+            <div class="absolute top-1/3 right-5 w-18 h-18 bg-retro-pink rounded-full flex items-center justify-center text-4xl sticker-cutout" style="animation: float 4s ease-in-out infinite;">💖</div>
+        </div>
+
+        <div id="s25-phone" class="absolute right-[2%] top-1/2 -translate-y-1/2 z-20 phone-svg" style="animation: float 7s ease-in-out infinite;">
+            <div class="phone-screen">
+                <div class="phone-camera-notch"></div>
+                <div class="text-black text-xs font">samsong</div>
+            </div>
+        </div>
+
+        <div id="emoji-fall-container" class="absolute inset-0 pointer-events-none z-50"></div>
+
+    </div>
+
+    <div id="dialogue-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="dialogue-box bg-white rounded-3xl p-6 shadow-2xl max-w-md w-full border-4 border-retro-dark-blue relative sticker-cutout transform scale-0 opacity-0">
+            <button id="close-dialogue" class="absolute top-4 right-4 bg-retro-dark-blue text-white rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold hover:bg-retro-pink transition-colors duration-200 sticker-cutout">
+                &times;
+            </button>
+            <h3 id="dialogue-title" class="text-3xl font-bold text-retro-blue mb-4 text-center"></h3>
+            <div id="dialogue-content" class="text-lg text-gray-700 text-center">
+                <img id="dialogue-image" src="" alt="Sticker" class="w-32 h-32 object-contain mx-auto mb-4 rounded-xl sticker-cutout hidden">
+                <p id="dialogue-text"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const goButton = document.getElementById('go-button');
+        const landingPage = document.getElementById('landing-page');
+        const mainPage = document.getElementById('main-page');
+        const winiImageWrapper = document.getElementById('wini-image-wrapper');
+        const dialogueModal = document.getElementById('dialogue-modal');
+        const closeDialogueButton = document.getElementById('close-dialogue');
+        const dialogueTitle = document.getElementById('dialogue-title');
+        const dialogueText = document.getElementById('dialogue-text');
+        const dialogueImage = document.getElementById('dialogue-image');
+        const s25Phone = document.getElementById('s25-phone');
+        const emojiFallContainer = document.getElementById('emoji-fall-container');
+
+        // Function to create a base64 SVG data URL for an emoji sticker
+        function createEmojiStickerSvg(emoji, bgColor) {
+            // Encode the emoji string to UTF-8 before btoa
+            const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                <rect x="0" y="0" width="100" height="100" rx="15" fill="${bgColor}" stroke="white" stroke-width="4"/>
+                <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="60" font-family="sans-serif">${emoji}</text>
+            </svg>`;
+            // Use encodeURIComponent and then unescape to handle non-ASCII characters for btoa
+            return `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgString)))}`;
+        }
+
+        // Data for each clickable part
+        const partContents = {
+            heart: {
+                title: "Her Kind Heart!",
+                text: "Nicest, kindest and most empathetic person.",
+                image: createEmojiStickerSvg('❤️', '#FFB6C1') // Soft Pink
+            },
+            eyes: {
+                title: "Her Beautiful Eyes!",
+                text: "Just beautiful. Protected by 2 inches of glass.",
+                image: createEmojiStickerSvg('👀', '#A7E0D3') // Light Teal/Mint
+            },
+            arm: {
+                title: "Her Arm!",
+                text: "Heavily scratched by Charlie.",
+                image: createEmojiStickerSvg('💪', '#F8E7A1') // Creamy Yellow
+            },
+            brain: {
+                title: "Her Brilliant Mind!",
+                text: "Smart, funny. Can translate between Hindi and English with 60% accuracy.",
+                image: createEmojiStickerSvg('🧠', '#6DA0E4') // Vibrant Blue
+            },
+            jacket: {
+                title: "Her Jacket!",
+                text: "100% unsmelt.",
+                image: createEmojiStickerSvg('🧥', '#FFB6C1') // Soft Pink
+            }
+        };
+
+        // Emojis to fall from the phone
+        const fallingEmojis = ['👽', '🧛‍♀️', '😂', '🫠', '😊', '😮', '😴', '😶‍🌫️', '🙂‍↔️', '🙂‍↕️', '🤖', '😺', '🐈', '👀', '🌃', '❌'];
+
+        // --- Page Navigation ---
+        goButton.addEventListener('click', () => {
+            landingPage.style.opacity = '0';
+            landingPage.style.pointerEvents = 'none';
+            mainPage.style.opacity = '1';
+            mainPage.style.pointerEvents = 'auto';
+        });
+
+        // --- Dialogue Box Functionality ---
+        document.querySelectorAll('.arrow-svg').forEach(arrow => {
+            arrow.addEventListener('click', (event) => {
+                const part = event.currentTarget.dataset.part;
+                const content = partContents[part];
+
+                if (content) {
+                    dialogueTitle.textContent = content.title;
+                    dialogueText.textContent = content.text;
+                    if (content.image) {
+                        dialogueImage.src = content.image;
+                        dialogueImage.classList.remove('hidden');
+                    } else {
+                        dialogueImage.classList.add('hidden');
+                    }
+
+                    dialogueModal.classList.remove('hidden');
+                    // Add 'show' class to trigger the animation
+                    dialogueModal.querySelector('.dialogue-box').classList.add('show');
+
+                    // Optional: Zoom effect on Wini's image
+                    // This is a simple zoom. For precise zooming to a specific part,
+                    // you would need the exact coordinates of that part on the image.
+                    winiImageWrapper.style.transform = 'scale(1.05)';
+                }
+            });
+        });
+
+        closeDialogueButton.addEventListener('click', () => {
+            dialogueModal.querySelector('.dialogue-box').classList.remove('show');
+            // Hide after animation completes
+            setTimeout(() => {
+                dialogueModal.classList.add('hidden');
+                winiImageWrapper.style.transform = 'scale(1)'; // Zoom out
+            }, 300); // Match animation duration
+        });
+
+        // Close dialogue if clicking outside the box
+        dialogueModal.addEventListener('click', (event) => {
+            if (event.target === dialogueModal) {
+                closeDialogueButton.click();
+            }
+        });
+
+        // --- S25 Phone Emoji Drop Functionality ---
+        s25Phone.addEventListener('click', () => {
+            const phoneRect = s25Phone.getBoundingClientRect();
+            // Calculate the bottom center of the phone for emojis to fall from
+            const phoneCenterX = phoneRect.left + phoneRect.width / 2;
+            const phoneBottom = phoneRect.bottom; // Emojis fall from the bottom of the phone
+
+            // Light up the phone screen
+            const phoneScreen = s25Phone.querySelector('.phone-screen');
+            phoneScreen.style.backgroundColor = '#A7E0D3'; // Light teal/mint
+            phoneScreen.style.boxShadow = '0 0 32px 8px #A7E0D3, 0 0 0 2px #fff';
+            setTimeout(() => {
+                phoneScreen.style.backgroundColor = '#000';
+                phoneScreen.style.boxShadow = '';
+            }, 1000);
+
+            // Generate a random number of emojis to fall (e.g., between 10 and 20)
+            const numberOfEmojisToDrop = Math.floor(Math.random() * 11) + 10; // 10 to 20 emojis
+
+            for (let i = 0; i < numberOfEmojisToDrop; i++) {
+                const emoji = fallingEmojis[Math.floor(Math.random() * fallingEmojis.length)]; // Random emoji selection
+                const emojiElement = document.createElement('div');
+                emojiElement.textContent = emoji;
+                emojiElement.classList.add('falling-emoji');
+
+                // Position the emoji initially at the bottom center of the phone
+                emojiElement.style.left = `${phoneCenterX}px`;
+                emojiElement.style.top = `${phoneBottom}px`;
+                emojiElement.style.transform = 'translate(-50%, -50%)'; // Center the emoji
+
+                emojiFallContainer.appendChild(emojiElement);
+
+                // Randomize animation properties
+                const delay = Math.random() * 0.5; // 0 to 0.5 seconds delay
+                const duration = 1.5 + Math.random() * 1; // 1.5 to 2.5 seconds duration
+                const horizontalDrift = (Math.random() - 0.5) * 100; // -50px to +50px horizontal drift
+                const endY = window.innerHeight + 50; // Fall off screen
+
+                // Define fall-and-fade animation with dynamic start and end points
+                // We create a new style element for each emoji to avoid cross-origin issues
+                const styleElement = document.createElement('style');
+                const animationName = `fall-and-fade-${Date.now()}-${i}`;
+                styleElement.innerHTML = `@keyframes ${animationName} {
+                    0% {
+                        transform: translate(-50%, -50%) translateY(0) translateX(0) rotate(0deg) scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translate(-50%, -50%) translateY(${endY - phoneBottom}px) translateX(${horizontalDrift}px) rotate(360deg) scale(0.5);
+                        opacity: 0;
+                    }
+                }`;
+                document.head.appendChild(styleElement);
+                emojiElement.style.animation = `${animationName} ${duration}s ease-out ${delay}s forwards`;
+
+                // Remove emoji and its style element after animation completes
+                emojiElement.addEventListener('animationend', () => {
+                    emojiElement.remove();
+                    styleElement.remove(); // Remove the dynamically created style tag
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>
